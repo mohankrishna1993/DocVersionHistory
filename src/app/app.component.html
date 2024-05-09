@@ -1,12 +1,1 @@
-<button (click)="showContent()">save</button>
-<st-editor [(ngModel)]="content" [config]="config"></st-editor>
-
-<div *ngIf="versionHistory.length > 0">
-  <h2>Version History</h2>
-  <ul>
-    <li *ngFor="let version of versionHistory">
-      <h3>{{ version.timestamp }}</h3>
-      <div [innerHTML]="version.diff.join('')"></div>
-    </li>
-  </ul>
-</div>
+<router-outlet></router-outlet>

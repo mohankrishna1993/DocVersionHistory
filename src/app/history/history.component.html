@@ -1,0 +1,10 @@
+
+<h2>Version History</h2>
+<div *ngIf="versionHistory.length > 0">
+  <ul>
+    <li *ngFor="let version of versionHistory; let i = index">
+      <h3>{{ version.timestamp }}</h3>
+      <div [innerHTML]="calculateDifferences(version.content, versionHistory[i - 1]?.content)"></div>
+    </li>
+  </ul>
+</div>
