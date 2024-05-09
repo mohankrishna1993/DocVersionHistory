@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { VersionHistoryService } from '../service/version-history.service';
-import { EditorConfig, BOLD_BUTTON, ITALIC_BUTTON, UNDERLINE_BUTTON} from 'ngx-simple-text-editor';
+import { EditorConfig, BOLD_BUTTON, ITALIC_BUTTON, UNDERLINE_BUTTON, FONT_SIZE_SELECT} from 'ngx-simple-text-editor';
 import { Router } from '@angular/router';
 import * as diff from 'diff';
 
@@ -23,7 +23,7 @@ versionHistory: { content: string, diff: diff.Change[], timestamp: string }[] = 
   content = '';
   config: EditorConfig = {
     placeholder: 'Type something...',
-    buttons: [BOLD_BUTTON, ITALIC_BUTTON, UNDERLINE_BUTTON],
+    buttons: [BOLD_BUTTON, ITALIC_BUTTON, UNDERLINE_BUTTON, FONT_SIZE_SELECT],
   };
   showContent() {
      console.log(this.content);
