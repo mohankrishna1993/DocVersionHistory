@@ -1,12 +1,5 @@
 
-<!-- <div *ngIf="versionHistory.length > 0">
-  <ul>
-    <li *ngFor="let version of versionHistory; let i = index">
-      <h3>{{ version.timestamp }}</h3>
-      <div [innerHTML]="calculateDifferences(version.content, versionHistory[i - 1]?.content)"></div>
-    </li>
-  </ul>
-</div> -->
+
 <div class="container">
   <div class="first-div">
 <h2 class="version-history-title">Version History</h2>
@@ -19,10 +12,10 @@
         </li>
       </ul>
     </div>
-    <!-- Content for the first div -->
+
   </div>
   <div class="second-div">
     <div [innerHTML]="calculateDifferences(versionHistory[selectedIndex].content, versionHistory[selectedIndex+1]?.content)"></div>
-    <!-- Content for the second div -->
+  
   </div>
 </div>
