@@ -13,7 +13,7 @@ export class HistoryComponent implements OnInit {
   versionHistory: { content: string, diff: diff.Change[], timestamp: string }[] = [];
   content = '';
   selectedIndex = 0;
-dmp = new DiffMatchPatch();
+  dmp = new DiffMatchPatch();
 
   constructor(private versionHistoryService : VersionHistoryService) {}
   ngOnInit(): void {
@@ -31,7 +31,7 @@ calculateDifferences(currentVersion: string, previousVersion: string | undefined
 
   const diffs = this.dmp.diff_main(previousVersion ?? "", currentVersion);
   this.dmp.diff_cleanupSemantic(diffs);
-
+  console.log(diffs);
 
   let result = '';
   diffs.forEach(([operation, text]) => {

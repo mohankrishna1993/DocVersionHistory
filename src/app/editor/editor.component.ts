@@ -1,23 +1,35 @@
 import { Component, OnInit } from '@angular/core';
 import { VersionHistoryService } from '../service/version-history.service';
-import { EditorConfig, BOLD_BUTTON, ITALIC_BUTTON, UNDERLINE_BUTTON, FONT_SIZE_SELECT} from 'ngx-simple-text-editor';
+import {
+  EditorConfig,
+  BOLD_BUTTON,
+  ITALIC_BUTTON,
+  UNDERLINE_BUTTON,
+  FONT_SIZE_SELECT,
+} from 'ngx-simple-text-editor';
 import { Router } from '@angular/router';
 import * as diff from 'diff';
 
 @Component({
   selector: 'app-editor',
   templateUrl: './editor.component.html',
-  styleUrls: ['./editor.component.scss']
+  styleUrls: ['./editor.component.scss'],
 })
-export class EditorComponent implements OnInit{
-  constructor(private versionHistoryService : VersionHistoryService,
+export class EditorComponent implements OnInit {
+  constructor(
+    private versionHistoryService: VersionHistoryService,
     private router: Router
-) {}
+  ) {}
+
   ngOnInit(): void {
-    this.content = localStorage.getItem("editor-string") ?? "";
+    this.content = localStorage.getItem('editor-string') ?? '';
   }
 
-versionHistory: { content: string, diff: diff.Change[], timestamp: string }[] = [];
+  versionHistory: {
+    content: string;
+    diff: diff.Change[];
+    timestamp: string;
+  }[] = [];
 
   title = 'editor';
   content = '';
@@ -26,17 +38,14 @@ versionHistory: { content: string, diff: diff.Change[], timestamp: string }[] = 
     buttons: [BOLD_BUTTON, ITALIC_BUTTON, UNDERLINE_BUTTON, FONT_SIZE_SELECT],
   };
   showContent() {
-     console.log(this.content);
-     this.versionHistoryService.saveVersion(this.content);
-     this.versionHistory = this.versionHistoryService.getVersionHistory();
-     console.log(this.versionHistory);
-     localStorage.setItem("editor-string", this.content);
+    //  console.log(this.content);
+    this.versionHistoryService.saveVersion(this.content);
+    this.versionHistory = this.versionHistoryService.getVersionHistory();
+    console.log(this.versionHistory);
+    localStorage.setItem('editor-string', this.content);
   }
-  showHistory() {
-
-  }
+  showHistory() {}
   navigateToHistory() {
-
     this.router.navigate(['/history']);
   }
 }
